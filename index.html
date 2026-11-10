@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORSENI Siswa Kecamatan Pinoh Utara 2026</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        },
+                        secondary: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Styles & Animations */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-pattern {
+            background-color: #1e1b4b;
+            background-image: radial-gradient(at 47% 33%, hsl(250, 75%, 35%) 0, transparent 59%), 
+                              radial-gradient(at 82% 65%, hsl(218, 89%, 28%) 0, transparent 55%);
+        }
+        .tab-section {
+            display: none;
+            animation: fadeIn 0.35s ease-out forwards;
+        }
+        .tab-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-indigo-900 via-primary-800 to-indigo-900 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium">
+        <span class="inline-flex items-center">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping mr-2"></span>
+            📍 Pekan Olahraga & Seni (PORSENI) Siswa Tingkat SD & SMP Se-Kecamatan Pinoh Utara — Kabupaten Melawi
+        </span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-nav border-b border-slate-200/80 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchMenu('beranda')">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-600 to-indigo-800 flex items-center justify-center text-white shadow-lg shadow-primary-500/30">
+                        <i class="fa-solid fa-medal text-2xl text-amber-400"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold tracking-wider uppercase text-primary-600 block">Kecamatan Pinoh Utara</span>
+                        <h1 class="text-xl font-extrabold text-slate-900 tracking-tight leading-none">PORSENI <span class="text-amber-500">2026</span></h1>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <button onclick="switchMenu('beranda')" id="nav-beranda" class="nav-btn px-4 py-2.5 rounded-xl font-semibold text-sm transition-all flex items-center space-x-2 bg-primary-50 text-primary-700">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Beranda</span>
+                    </button>
+                    <button onclick="switchMenu('pendaftaran')" id="nav-pendaftaran" class="nav-btn px-4 py-2.5 rounded-xl font-semibold text-sm text-slate-600 hover:text-primary-600 hover:bg-slate-100 transition-all flex items-center space-x-2">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>Pendaftaran</span>
+                    </button>
+                    <button onclick="switchMenu('juknis')" id="nav-juknis" class="nav-btn px-4 py-2.5 rounded-xl font-semibold text-sm text-slate-600 hover:text-primary-600 hover:bg-slate-100 transition-all flex items-center space-x-2">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                        <span>Juknis Lomba</span>
+                    </button>
+                    <button onclick="switchMenu('jadwal')" id="nav-jadwal" class="nav-btn px-4 py-2.5 rounded-xl font-semibold text-sm text-slate-600 hover:text-primary-600 hover:bg-slate-100 transition-all flex items-center space-x-2">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span>Jadwal Pelaksanaan</span>
+                    </button>
+                </nav>
+
+                <!-- CTA Button Desktop -->
+                <div class="hidden md:flex items-center">
+                    <button onclick="switchMenu('pendaftaran')" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all text-sm flex items-center space-x-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Daftar Sekarang</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-primary-600 p-2 rounded-xl focus:outline-none bg-slate-100">
+                        <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2 shadow-lg">
+            <button onclick="switchMenu('beranda')" id="mnav-beranda" class="mnav-btn w-full text-left px-4 py-3 rounded-xl font-semibold text-sm flex items-center space-x-3 bg-primary-50 text-primary-700">
+                <i class="fa-solid fa-house w-5 text-center"></i>
+                <span>Beranda</span>
+            </button>
+            <button onclick="switchMenu('pendaftaran')" id="mnav-pendaftaran" class="mnav-btn w-full text-left px-4 py-3 rounded-xl font-semibold text-sm text-slate-600 hover:bg-slate-100 flex items-center space-x-3">
+                <i class="fa-solid fa-user-plus w-5 text-center"></i>
+                <span>Pendaftaran Kontingen</span>
+            </button>
+            <button onclick="switchMenu('juknis')" id="mnav-juknis" class="mnav-btn w-full text-left px-4 py-3 rounded-xl font-semibold text-sm text-slate-600 hover:bg-slate-100 flex items-center space-x-3">
+                <i class="fa-solid fa-book-open-reader w-5 text-center"></i>
+                <span>Petunjuk Teknis (Juknis)</span>
+            </button>
+            <button onclick="switchMenu('jadwal')" id="mnav-jadwal" class="mnav-btn w-full text-left px-4 py-3 rounded-xl font-semibold text-sm text-slate-600 hover:bg-slate-100 flex items-center space-x-3">
+                <i class="fa-solid fa-calendar-days w-5 text-center"></i>
+                <span>Jadwal Pelaksanaan</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+
+        <!-- ========================================== -->
+        <!-- 1. MENU BERANDA                            -->
+        <!-- ========================================== -->
+        <section id="section-beranda" class="tab-section active">
+            <!-- Hero Section -->
+            <div class="hero-pattern text-white relative overflow-hidden">
+                <!-- Decorative background shapes -->
+                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-indigo-400/10 blur-3xl pointer-events-none"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-amber-300 text-xs sm:text-sm font-semibold">
+                                <i class="fa-solid fa-sparkles"></i>
+                                <span>Ajang Talenta & Sportivitas Pelajar Pinoh Utara</span>
+                            </div>
+                            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                                Satukan Semangat, <br/>
+                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-400 to-orange-400">
+                                    Raih Prestasi Gemilang!
+                                </span>
+                            </h1>
+                            <p class="text-indigo-100 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                                Selamat datang di portal resmi <strong>Pekan Olahraga dan Seni (PORSENI) Siswa Tingkat SD & SMP Kecamatan Pinoh Utara</strong>. Mari junjung tinggi sportivitas, kembangkan bakat seni, dan pererat persaudaraan antar sekolah se-Kecamatan Pinoh Utara.
+                            </p>
+                            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                                <button onclick="switchMenu('pendaftaran')" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center space-x-3 text-base">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    <span>Daftarkan Kontingen Sekolah</span>
+                                </button>
+                                <button onclick="switchMenu('juknis')" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold transition-all flex items-center justify-center space-x-3 text-base">
+                                    <i class="fa-solid fa-file-arrow-down"></i>
+                                    <span>Lihat Juknis & Panduan</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Right Hero Card / Countdown & Info -->
+                        <div class="lg:col-span-5">
+                            <div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+                                <div class="flex items-center justify-between border-b border-white/15 pb-4">
+                                    <div>
+                                        <span class="text-xs uppercase tracking-wider text-indigo-200 font-semibold">Pusat Kegiatan Utama</span>
+                                        <h3 class="text-lg font-bold text-white flex items-center mt-0.5">
+                                            <i class="fa-solid fa-location-dot text-amber-400 mr-2"></i>
+                                            Ibukota Kec. Pinoh Utara (Tekelak)
+                                        </h3>
+                                    </div>
+                                    <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold px-3 py-1 rounded-full">
+                                        Pendaftaran Dibuka
+                                    </span>
+                                </div>
+
+                                <!-- Countdown Boxes -->
+                                <div>
+                                    <p class="text-xs text-indigo-200 uppercase tracking-wider font-semibold mb-3 text-center">Hitung Mundur Pembukaan PORSENI</p>
+                                    <div class="grid grid-cols-4 gap-3 text-center">
+                                        <div class="bg-indigo-950/60 border border-white/10 rounded-2xl p-3">
+                                            <span id="cd-days" class="text-2xl sm:text-3xl font-extrabold text-amber-400 block">12</span>
+                                            <span class="text-[11px] text-indigo-200">Hari</span>
+                                        </div>
+                                        <div class="bg-indigo-950/60 border border-white/10 rounded-2xl p-3">
+                                            <span id="cd-hours" class="text-2xl sm:text-3xl font-extrabold text-white block">08</span>
+                                            <span class="text-[11px] text-indigo-200">Jam</span>
+                                        </div>
+                                        <div class="bg-indigo-950/60 border border-white/10 rounded-2xl p-3">
+                                            <span id="cd-mins" class="text-2xl sm:text-3xl font-extrabold text-white block">45</span>
+                                            <span class="text-[11px] text-indigo-200">Menit</span>
+                                        </div>
+                                        <div class="bg-indigo-950/60 border border-white/10 rounded-2xl p-3">
+                                            <span id="cd-secs" class="text-2xl sm:text-3xl font-extrabold text-amber-400 block">20</span>
+                                            <span class="text-[11px] text-indigo-200">Detik</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Quick Dates -->
+                                <div class="space-y-3 pt-2 text-sm">
+                                    <div class="flex items-center justify-between bg-white/5 p-3 rounded-xl">
+                                        <span class="text-indigo-100 flex items-center"><i class="fa-regular fa-calendar-check text-amber-400 mr-2.5"></i> Batas Pendaftaran</span>
+                                        <span class="font-bold text-white">20 Nov 2026</span>
+                                    </div>
+                                    <div class="flex items-center justify-between bg-white/5 p-3 rounded-xl">
+                                        <span class="text-indigo-100 flex items-center"><i class="fa-solid fa-users-gear text-amber-400 mr-2.5"></i> Technical Meeting</span>
+                                        <span class="font-bold text-white">22 Nov 2026</span>
+                                    </div>
+                                    <div class="flex items-center justify-between bg-white/5 p-3 rounded-xl">
+                                        <span class="text-indigo-100 flex items-center"><i class="fa-solid fa-fire-flame-curved text-amber-400 mr-2.5"></i> Pelaksanaan Lomba</span>
+                                        <span class="font-bold text-amber-300">24 – 28 Nov 2026</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats Banner -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
+                <div class="bg-white rounded-3xl shadow-xl border border-slate-100 p-6 sm:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-solid fa-school"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl sm:text-3xl font-extrabold text-slate-900">28+</h4>
+                            <p class="text-xs sm:text-sm text-slate-500 font-medium">SD & SMP Partisipan</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-solid fa-futbol"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl sm:text-3xl font-extrabold text-slate-900">7 Cabang</h4>
+                            <p class="text-xs sm:text-sm text-slate-500 font-medium">Bidang Olahraga</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl sm:text-3xl font-extrabold text-slate-900">6 Cabang</h4>
+                            <p class="text-xs sm:text-sm text-slate-500 font-medium">Bidang Seni & Budaya</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl sm:text-3xl font-extrabold text-slate-900">650+</h4>
+                            <p class="text-xs sm:text-sm text-slate-500 font-medium">Target Atlet & Artis Siswa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sambutan & Tentang Kegiatan -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-5">
+                        <div class="bg-gradient-to-br from-primary-600 to-indigo-900 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
+                            <i class="fa-solid fa-quote-right text-8xl text-white/10 absolute top-4 right-4"></i>
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="w-16 h-16 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center font-extrabold text-2xl shadow-md">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs uppercase tracking-wider text-amber-300 font-bold">Sambutan Panitia</span>
+                                    <h3 class="text-xl font-bold">Panitia Pelaksana PORSENI</h3>
+                                    <p class="text-xs text-indigo-200">Korwil Pendidikan Kec. Pinoh Utara</p>
+                                </div>
+                            </div>
+                            <p class="text-indigo-100 text-sm leading-relaxed mb-6 italic">
+                                "Kegiatan PORSENI Siswa Kecamatan Pinoh Utara tahun 2026 bukan sekadar ajang mencari juara, melainkan wadah pembinaan karakter, kedisiplinan, serta mempererat tali silaturahmi antar guru dan siswa dari seluruh desa di Kecamatan Pinoh Utara. Mari kita sukseskan bersama dengan semangat sportivitas!"
+                            </p>
+                            <div class="border-t border-white/15 pt-4 flex items-center justify-between text-xs text-indigo-200">
+                                <span>📍 Kec. Pinoh Utara, Kab. Melawi</span>
+                                <span class="font-semibold text-amber-300">#PinohUtaraBerprestasi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 space-y-6">
+                        <div>
+                            <span class="text-primary-600 font-bold text-sm uppercase tracking-wider">Kategori Perlombaan</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Cabang Olahraga & Seni yang Diperlombakan</h2>
+                            <p class="text-slate-600 mt-2 text-sm sm:text-base">Tersedia untuk jenjang Sekolah Dasar (SD) dan Sekolah Menengah Pertama (SMP) se-Kecamatan Pinoh Utara.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Card Olahraga -->
+                            <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm card-hover">
+                                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl mb-4">
+                                    <i class="fa-solid fa-person-running"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-2">Bidang Olahraga</h3>
+                                <ul class="space-y-2 text-sm text-slate-600">
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Sepak Bola Mini (SD) & Futsal (SMP)</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Bola Voli Putra & Putri</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Bulu Tangkis (Tunggal & Ganda)</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Tenis Meja Putra & Putri</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Atletik (Lari Sprint 60m/100m & Lompat Jauh)</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Catur Cepat Perorangan</li>
+                                </ul>
+                            </div>
+
+                            <!-- Card Seni -->
+                            <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm card-hover">
+                                <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl mb-4">
+                                    <i class="fa-solid fa-masks-theater"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-2">Bidang Seni & Budaya</h3>
+                                <ul class="space-y-2 text-sm text-slate-600">
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 mr-2"></i> Tari Kreasi Daerah (Melayu & Dayak)</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 mr-2"></i> Menyanyi Solo (Lagu Wajib & Daerah)</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 mr-2"></i> Baca Puisi & Cipta Puisi</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 mr-2"></i> Seni Lukis & Gambar Bercerita</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 mr-2"></i> Kriya Anyaman Tradisional</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 mr-2"></i> Bertutur / Mendongeng Cerita Rakyat</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex flex-wrap gap-3">
+                            <button onclick="switchMenu('juknis')" class="text-primary-600 hover:text-primary-800 font-semibold text-sm inline-flex items-center">
+                                Pelajari aturan lengkap di halaman Juknis <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 2. MENU PENDAFTARAN                        -->
+        <!-- ========================================== -->
+        <section id="section-pendaftaran" class="tab-section py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header Section -->
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="bg-primary-100 text-primary-700 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Formulir Online</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Pendaftaran Peserta PORSENI</h2>
+                    <p class="text-slate-600 mt-2">Silakan isi data kontingen sekolah dan peserta didik yang akan didaftarkan. Data yang dikirim akan langsung tercatat pada tabel rekapitulasi pendaftar di bawah.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- Form Pendaftaran -->
+                    <div class="lg:col-span-7 bg-white rounded-3xl shadow-lg border border-slate-200/80 p-6 sm:p-8">
+                        <div class="flex items-center space-x-3 border-b border-slate-100 pb-4 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-primary-600 text-white flex items-center justify-center">
+                                <i class="fa-solid fa-file-signature"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900">Input Data Kontingen Sekolah</h3>
+                                <p class="text-xs text-slate-500">Pastikan NISN dan Nama Siswa sesuai dengan Dapodik</p>
+                            </div>
+                        </div>
+
+                        <form id="formPendaftaran" onsubmit="handleRegistration(event)" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <!-- Jenjang -->
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Jenjang Pendidikan <span class="text-red-500">*</span></label>
+                                    <select id="regJenjang" required onchange="updateSchoolSuggestions()" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-primary-600 focus:ring-2 focus:ring-primary-100 outline-none text-sm bg-slate-50 font-medium">
+                                        <option value="SD">Sekolah Dasar (SD)</option>
+                                        <option value="SMP">Sekolah Menengah Pertama (SMP)</option>
+                                    </select>
+                                </div>
+
+                                <!-- Asal Sekolah -->
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Nama Sekolah <span class="text-red-500">*</span></label>
+                                    <input type="text" id="regSekolah" list="school-list" required placeholder="Contoh: SDN 01 Tekelak" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-primary-600 focus:ring-2 focus:ring-primary-100 outline-none text-sm">
+                                    <datalist id="school-list">
+                                        <option value="SDN 01 Tekelak"></option>
+                                        <option value="SDN 02 Melamut"></option>
+                                        <option value="SDN 03 Nanga Man"></option>
+                                        <option value="SDN 04 Sungai Pinang"></option>
+                                        <option value="SDN 05 Engkurai"></option>
+                                        <option value="SDN 06 Merpak"></option>
+                                        <option value="SMPN 1 Pinoh Utara"></option>
+                                        <option value="SMPN 2 Pinoh Utara"></option>
+                                        <option value="SMPN 3 Satu Atap Pinoh Utara"></option>
+                                    </datalist>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <!-- Kategori Bidang -->
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Bidang Lomba <span class="text-red-500">*</span></label>
+                                    <select id="regBidang" required onchange="updateCabangOptions()" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-primary-600 focus:ring-2 focus:ring-primary-100 outline-none text-sm bg-slate-50 font-medium">
+                                        <option value="Olahraga">Bidang Olahraga</option>
+                                        <option value="Seni">Bidang Seni & Budaya</option>
+                                    </select>
+                                </div>
+
+                                <!-- Cabang Lomba -->
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Cabang Perlombaan <span class="text-red-500">*</span></label>
+                                    <select id="regCabang" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-primary-600 focus:ring-2 focus:ring-primary-100 outline-none text-sm bg-slate-50 font-medium">
+                                        <!-- Populated dynamically via JS -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <!-- Nama Peserta / Regu -->
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Nama Siswa / Ketua Regu <span class="text-red-500">*</span></label>
+                                    <input type="text" id="regNama" required placeholder="Nama Lengkap Siswa" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-primary-600 focus:ring-2 focus:ring-primary-100 outline-none text-sm">
+                                </div>
+
+                                <!-- Kategori Putra / Putri -->
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Kategori Peserta <span class="text-red-500">*</span></label>
+                                    <select id="regGender" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-primary-600 focus:ring-2 focus:ring-primary-100 outline-none text-sm bg-slate-50 font-medium">
+                                        <option value="Putra">Putra</option>
+                                        <option value="Putri">Putri</option>
+                                        <option value="Beregu / Campuran">Beregu / Campuran</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <!-- Guru Pendamping -->
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Nama Official / Guru Pendamping <span class="text-red-500">*</span></label>
+                                    <input type="text" id="regPendamping" required placeholder="Contoh: Bpk. Hendra, S.Pd" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-primary-600 focus:ring-2 focus:ring-primary-100 outline-none text-sm">
+                                </div>
+
+                                <!-- Nomor WhatsApp -->
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">No. WhatsApp Official <span class="text-red-500">*</span></label>
+                                    <input type="tel" id="regWa" required placeholder="Contoh: 081234567890" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-primary-600 focus:ring-2 focus:ring-primary-100 outline-none text-sm">
+                                </div>
+                            </div>
+
+                            <!-- Berkas Persyaratan Check -->
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 space-y-2">
+                                <span class="block text-xs font-bold uppercase tracking-wider text-slate-700">Konfirmasi Kelengkapan Berkas Fisik (Dibawa Saat TM):</span>
+                                <label class="flex items-center space-x-3 text-sm text-slate-700 cursor-pointer">
+                                    <input type="checkbox" required class="w-4 h-4 text-primary-600 rounded focus:ring-primary-500">
+                                    <span>Surat Rekomendasi Kepala Sekolah & Fotokopi Rapor / Akta Kelahiran</span>
+                                </label>
+                            </div>
+
+                            <div class="pt-2">
+                                <button type="submit" class="w-full bg-gradient-to-r from-primary-600 to-indigo-700 hover:from-primary-700 hover:to-indigo-800 text-white font-bold py-4 px-6 rounded-2xl shadow-lg shadow-primary-500/25 transition-all flex items-center justify-center space-x-2">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                    <span>Kirim Pendaftaran Peserta</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Alur & Informasi Pendaftaran + Daftar Pendaftar -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <!-- Info Box -->
+                        <div class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                            <h3 class="text-lg font-bold flex items-center mb-4">
+                                <i class="fa-solid fa-circle-info text-amber-400 mr-2.5"></i>
+                                Alur Pendaftaran Kontingen
+                            </h3>
+                            <ol class="space-y-4 text-sm text-slate-300">
+                                <li class="flex items-start space-x-3">
+                                    <span class="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                                    <span>Operator atau Guru PJOK/Seni mengisi formulir pendaftaran online pada halaman ini sebelum <strong>20 November 2026</strong>.</span>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <span class="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                                    <span>Cetak bukti pendaftaran / rekap kontingen sekolah yang sudah terdaftar.</span>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <span class="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                                    <span>Serahkan berkas fisik (Surat Tugas Kepala Sekolah, Pas Foto 3x4, dan Fotokopi Akta) saat <strong>Technical Meeting (22 Nov 2026)</strong>.</span>
+                                </li>
+                            </ol>
+                            <div class="mt-6 pt-5 border-t border-white/10 flex items-center justify-between text-xs">
+                                <span>Butuh bantuan teknis?</span>
+                                <span class="text-amber-400 font-bold"><i class="fa-brands fa-whatsapp mr-1"></i> Panitia: 0852-4500-XXXX</span>
+                            </div>
+                        </div>
+
+                        <!-- Statistik Ringkas Pendaftar -->
+                        <div class="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="font-bold text-slate-900 text-base">Data Kontingen Terdaftar</h4>
+                                <span id="totalPendaftarBadge" class="bg-emerald-100 text-emerald-700 text-xs font-extrabold px-3 py-1 rounded-full">5 Terdaftar</span>
+                            </div>
+                            <div id="recentRegistrationsList" class="space-y-3 max-h-96 overflow-y-auto pr-1">
+                                <!-- Populated via JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 3. MENU JUKNIS (PETUNJUK TEKNIS)           -->
+        <!-- ========================================== -->
+        <section id="section-juknis" class="tab-section py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                    <div>
+                        <span class="bg-purple-100 text-purple-700 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Pedoman & Regulasi</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Petunjuk Teknis (Juknis) PORSENI</h2>
+                        <p class="text-slate-600 mt-1">Ketentuan umum, persyaratan peserta, dan peraturan masing-masing cabang lomba Kecamatan Pinoh Utara.</p>
+                    </div>
+                    <button onclick="showNotification('Mengunduh Dokumen PDF', 'Berkas Juknis_Lengkap_PORSENI_Pinoh_Utara_2026.pdf sedang diunduh ke perangkat Anda.', 'success')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3.5 rounded-2xl shadow-md transition-all flex items-center space-x-2.5 text-sm shrink-0 self-start md:self-auto">
+                        <i class="fa-solid fa-file-pdf text-red-400 text-lg"></i>
+                        <span>Unduh Juknis Lengkap (PDF)</span>
+                    </button>
+                </div>
+
+                <!-- Ketentuan Umum Banner -->
+                <div class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm mb-8">
+                    <h3 class="text-lg font-extrabold text-slate-900 mb-4 flex items-center">
+                        <i class="fa-solid fa-scale-balanced text-primary-600 mr-2.5"></i>
+                        Ketentuan Umum Peserta PORSENI Kecamatan Pinoh Utara
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                            <span class="font-bold text-primary-700 block mb-1">1. Status Peserta Didik</span>
+                            <p class="text-slate-600 leading-relaxed">Peserta adalah siswa aktif SD atau SMP di wilayah Kecamatan Pinoh Utara yang terdaftar pada Dapodik tahun ajaran berjalan.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                            <span class="font-bold text-primary-700 block mb-1">2. Batas Usia Maksimal</span>
+                            <p class="text-slate-600 leading-relaxed">Jenjang SD maksimal kelahiran tahun 2014 (dan sesudahnya). Jenjang SMP maksimal kelahiran tahun 2011 (dan sesudahnya).</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                            <span class="font-bold text-primary-700 block mb-1">3. Kuota & Perangkapan</span>
+                            <p class="text-slate-600 leading-relaxed">Satu siswa maksimal hanya diperbolehkan mengikuti 1 cabang olahraga dan 1 cabang seni agar jadwal tidak berbenturan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Kategori Juknis -->
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                    <div class="flex space-x-2 bg-slate-200/70 p-1.5 rounded-2xl">
+                        <button onclick="filterJuknis('all')" id="juknis-filter-all" class="juknis-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-900 shadow-sm transition-all">Semua Cabang</button>
+                        <button onclick="filterJuknis('Olahraga')" id="juknis-filter-Olahraga" class="juknis-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition-all">Cabang Olahraga</button>
+                        <button onclick="filterJuknis('Seni')" id="juknis-filter-Seni" class="juknis-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition-all">Cabang Seni</button>
+                    </div>
+                    <div class="relative w-full sm:w-72">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+                        <input type="text" id="searchJuknis" oninput="renderJuknisCards()" placeholder="Cari cabang lomba..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-primary-600 outline-none bg-white">
+                    </div>
+                </div>
+
+                <!-- Grid Juknis Cards -->
+                <div id="juknisContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Populated via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 4. MENU JADWAL PELAKSANAAN                 -->
+        <!-- ========================================== -->
+        <section id="section-jadwal" class="tab-section py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <span class="bg-amber-100 text-amber-800 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Agenda & Lokasi</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Jadwal Pelaksanaan PORSENI</h2>
+                    <p class="text-slate-600 mt-2">Rangkaian kegiatan dilaksanakan selama 5 hari mulai tanggal <strong>24 s.d. 28 November 2026</strong> bertempat di pusat Kecamatan Pinoh Utara.</p>
+                </div>
+
+                <!-- Day Selector Tabs -->
+                <div class="flex overflow-x-auto pb-3 mb-8 gap-3 justify-start sm:justify-center">
+                    <button onclick="filterSchedule('all')" id="sched-btn-all" class="sched-btn shrink-0 px-5 py-3 rounded-2xl font-bold text-sm bg-primary-600 text-white shadow-md transition-all">
+                        Semua Hari
+                    </button>
+                    <button onclick="filterSchedule('Hari 1')" id="sched-btn-Hari 1" class="sched-btn shrink-0 px-5 py-3 rounded-2xl font-bold text-sm bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition-all">
+                        Hari 1 (Selasa, 24 Nov)
+                    </button>
+                    <button onclick="filterSchedule('Hari 2')" id="sched-btn-Hari 2" class="sched-btn shrink-0 px-5 py-3 rounded-2xl font-bold text-sm bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition-all">
+                        Hari 2 (Rabu, 25 Nov)
+                    </button>
+                    <button onclick="filterSchedule('Hari 3')" id="sched-btn-Hari 3" class="sched-btn shrink-0 px-5 py-3 rounded-2xl font-bold text-sm bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition-all">
+                        Hari 3 (Kamis, 26 Nov)
+                    </button>
+                    <button onclick="filterSchedule('Hari 4')" id="sched-btn-Hari 4" class="sched-btn shrink-0 px-5 py-3 rounded-2xl font-bold text-sm bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition-all">
+                        Hari 4 (Jumat, 27 Nov)
+                    </button>
+                    <button onclick="filterSchedule('Hari 5')" id="sched-btn-Hari 5" class="sched-btn shrink-0 px-5 py-3 rounded-2xl font-bold text-sm bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition-all">
+                        Hari 5 (Sabtu, 28 Nov)
+                    </button>
+                </div>
+
+                <!-- Timeline / Schedule List -->
+                <div id="scheduleContainer" class="space-y-6">
+                    <!-- Populated via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Custom Notification Modal / Toast -->
+    <div id="toastModal" class="fixed bottom-6 right-6 z-50 hidden max-w-md w-full bg-white rounded-2xl shadow-2xl border border-slate-200 p-5 transition-all">
+        <div class="flex items-start space-x-4">
+            <div id="toastIcon" class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl shrink-0">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="flex-1">
+                <h4 id="toastTitle" class="font-bold text-slate-900 text-sm">Berhasil!</h4>
+                <p id="toastMessage" class="text-xs text-slate-600 mt-1 leading-relaxed"></p>
+            </div>
+            <button onclick="closeToast()" class="text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-slate-800">
+                <div class="md:col-span-5 space-y-3">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center text-white">
+                            <i class="fa-solid fa-medal text-amber-300"></i>
+                        </div>
+                        <span class="text-lg font-extrabold text-white tracking-tight">PORSENI PINOH UTARA 2026</span>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+                        Portal Informasi Resmi Pekan Olahraga dan Seni (PORSENI) Siswa Tingkat SD dan SMP Kecamatan Pinoh Utara, Kabupaten Melawi, Provinsi Kalimantan Barat.
+                    </p>
+                </div>
+                <div class="md:col-span-3 space-y-2 text-sm">
+                    <h4 class="text-white font-bold mb-3">Navigasi Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><button onclick="switchMenu('beranda')" class="hover:text-white transition-colors">Beranda Utama</button></li>
+                        <li><button onclick="switchMenu('pendaftaran')" class="hover:text-white transition-colors">Pendaftaran Kontingen</button></li>
+                        <li><button onclick="switchMenu('juknis')" class="hover:text-white transition-colors">Unduh Juknis Lomba</button></li>
+                        <li><button onclick="switchMenu('jadwal')" class="hover:text-white transition-colors">Jadwal & Lokasi Pertandingan</button></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-4 space-y-2 text-sm">
+                    <h4 class="text-white font-bold mb-3">Sekretariat Panitia</h4>
+                    <p class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-location-dot text-amber-400 mt-1"></i>
+                        <span>Kantor Korwil Pendidikan Kecamatan Pinoh Utara, Desa Tekelak, Kabupaten Melawi.</span>
+                    </p>
+                    <p class="flex items-center space-x-2.5 pt-1">
+                        <i class="fa-solid fa-envelope text-amber-400"></i>
+                        <span>panitia.porseni@pinohutara.id</span>
+                    </p>
+                </div>
+            </div>
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+                <p>&copy; 2026 Panitia PORSENI Siswa Kecamatan Pinoh Utara. Seluruh Hak Cipta Dilindungi.</p>
+                <p class="mt-2 sm:mt-0">Sportif • Kreatif • Berkarakter</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT LOGIC                           -->
+    <!-- ========================================== -->
+    <script>
+        // 1. Data Cabang Lomba untuk Form Pendaftaran
+        const cabangOptions = {
+            Olahraga: [
+                "Sepak Bola Mini (Jenjang SD)",
+                "Futsal Putra (Jenjang SMP)",
+                "Bola Voli Putra / Putri",
+                "Bulu Tangkis Tunggal & Ganda",
+                "Tenis Meja Putra / Putri",
+                "Atletik - Lari Sprint (60m SD / 100m SMP)",
+                "Atletik - Lompat Jauh",
+                "Catur Cepat Perorangan"
+            ],
+            Seni: [
+                "Tari Kreasi Daerah (Melayu / Dayak)",
+                "Menyanyi Solo (Vokal Tunggal)",
+                "Baca Puisi & Cipta Puisi",
+                "Seni Lukis / Gambar Bercerita",
+                "Kriya Anyaman Tradisional",
+                "Bertutur / Mendongeng Cerita Rakyat"
+            ]
+        };
+
+        // 2. Data Awal Pendaftar (Simulasi Lokal Kecamatan Pinoh Utara)
+        let registrationsData = [
+            {
+                jenjang: "SD",
+                sekolah: "SDN 01 Tekelak",
+                bidang: "Olahraga",
+                cabang: "Sepak Bola Mini (Jenjang SD)",
+                nama: "Rizky Pratama (Regu Inti)",
+                gender: "Putra",
+                pendamping: "Bpk. Antonius, S.Pd"
+            },
+            {
+                jenjang: "SMP",
+                sekolah: "SMPN 1 Pinoh Utara",
+                bidang: "Seni",
+                cabang: "Tari Kreasi Daerah (Melayu / Dayak)",
+                nama: "Sanggar Tari Melawi Indah",
+                gender: "Beregu / Campuran",
+                pendamping: "Ibu Maria Ulfa, S.Pd"
+            },
+            {
+                jenjang: "SD",
+                sekolah: "SDN 03 Nanga Man",
+                bidang: "Olahraga",
+                cabang: "Bulu Tangkis Tunggal & Ganda",
+                nama: "Yohanes Calvin",
+                gender: "Putra",
+                pendamping: "Bpk. Dedi Kurniawan, S.Pd"
+            },
+            {
+                jenjang: "SMP",
+                sekolah: "SMPN 2 Pinoh Utara",
+                bidang: "Olahraga",
+                cabang: "Bola Voli Putra / Putri",
+                nama: "Tim Voli Putri SMPN 2",
+                gender: "Putri",
+                pendamping: "Bpk. Hendri, S.Or"
+            },
+            {
+                jenjang: "SD",
+                sekolah: "SDN 02 Melamut",
+                bidang: "Seni",
+                cabang: "Menyanyi Solo (Vokal Tunggal)",
+                nama: "Putri Lestari",
+                gender: "Putri",
+                pendamping: "Ibu Rina Wati, S.Pd"
+            }
+        ];
+
+        // 3. Data Juknis Lomba
+        const juknisData = [
+            {
+                kategori: "Olahraga",
+                judul: "Sepak Bola Mini (SD) & Futsal (SMP)",
+                jenjang: "SD & SMP",
+                kuota: "Maks. 10 Pemain / Sekolah",
+                icon: "fa-futbol",
+                warna: "amber",
+                aturan: [
+                    "Sistem pertandingan menggunakan sistem gugur (knock-out).",
+                    "Waktu pertandingan 2 x 15 menit dengan istirahat 5 menit.",
+                    "Setiap tim wajib menggunakan kostum bernomor punggung dan sepatu olahraga standar.",
+                    "Keputusan wasit bersifat mutlak dan tidak dapat diganggu gugat."
+                ]
+            },
+            {
+                kategori: "Olahraga",
+                judul: "Bola Voli Putra & Putri",
+                jenjang: "SD & SMP",
+                kuota: "1 Tim Putra & 1 Tim Putri",
+                icon: "fa-volleyball",
+                warna: "blue",
+                aturan: [
+                    "Menggunakan peraturan PBVSI terbaru dengan sistem rally point (25 poin).",
+                    "Babak penyisihan menggunakan sistem Two Winning Sets.",
+                    "Tinggi net disesuaikan untuk jenjang SD (2,10m) dan SMP (Putra 2,35m / Putri 2,20m)."
+                ]
+            },
+            {
+                kategori: "Olahraga",
+                judul: "Bulu Tangkis & Tenis Meja",
+                jenjang: "SD & SMP",
+                kuota: "Tunggal Pa/Pi & Ganda",
+                icon: "fa-table-tennis-paddle-ball",
+                warna: "emerald",
+                aturan: [
+                    "Pertandingan menggunakan sistem rally point 21x3 (Bulu Tangkis) dan 11x5 (Tenis Meja).",
+                    "Peserta membawa raket/bet masing-masing, shuttlecock/bola disediakan panitia.",
+                    "Wajib hadir di lapangan 15 menit sebelum jadwal panggilan."
+                ]
+            },
+            {
+                kategori: "Olahraga",
+                judul: "Atletik (Sprint & Lompat Jauh)",
+                jenjang: "SD & SMP",
+                kuota: "1 Putra & 1 Putri / Sekolah",
+                icon: "fa-person-running",
+                warna: "orange",
+                aturan: [
+                    "Nomor lari cepat: 60 meter untuk SD dan 100 meter untuk SMP.",
+                    "Nomor lompat jauh diberikan 3 kali kesempatan lompatan pada babak kualifikasi.",
+                    "Pemenang ditentukan berdasarkan catatan waktu tercepat dan jarak lompatan terjauh."
+                ]
+            },
+            {
+                kategori: "Seni",
+                judul: "Tari Kreasi Daerah Kalimantan Barat",
+                jenjang: "SD & SMP",
+                kuota: "Beregu (3 - 5 Penari)",
+                icon: "fa-masks-theater",
+                warna: "purple",
+                aturan: [
+                    "Menampilkan tari kreasi yang berakar pada budaya lokal (Melayu atau Dayak).",
+                    "Durasi penampilan 5 hingga 7 menit.",
+                    "Musik pengiring dalam bentuk file MP3 diserahkan ke panitia saat Technical Meeting.",
+                    "Kriteria penilaian: Wiraga, Wirama, Wirasa, dan Keserasian Kostum."
+                ]
+            },
+            {
+                kategori: "Seni",
+                judul: "Menyanyi Solo (Vokal Tunggal)",
+                jenjang: "SD & SMP",
+                kuota: "1 Putra & 1 Putri / Sekolah",
+                icon: "fa-microphone-lines",
+                warna: "pink",
+                aturan: [
+                    "Setiap peserta membawakan 1 Lagu Wajib Nasional dan 1 Lagu Daerah Kalimantan Barat.",
+                    "Iringan musik menggunakan minus one yang disediakan oleh panitia.",
+                    "Penilaian meliputi: Materi suara, teknik vokal (intonasi/artikulasi), dan penghayatan."
+                ]
+            },
+            {
+                kategori: "Seni",
+                judul: "Baca Puisi & Gambar Bercerita",
+                jenjang: "SD & SMP",
+                kuota: "1 Peserta / Cabang",
+                icon: "fa-paintbrush",
+                warna: "indigo",
+                aturan: [
+                    "Naskah puisi pilihan disediakan oleh panitia dengan tema Kepahlawanan & Cinta Tanah Air.",
+                    "Lomba Gambar Bercerita menggunakan kertas ukuran A3 (disediakan panitia), alat warna dibawa peserta.",
+                    "Waktu pengerjaan Gambar Bercerita maksimal 180 menit."
+                ]
+            },
+            {
+                kategori: "Seni",
+                judul: "Kriya Anyaman Tradisional",
+                jenjang: "SD & SMP",
+                kuota: "1 Peserta / Sekolah",
+                icon: "fa-hands-holding-circle",
+                warna: "teal",
+                aturan: [
+                    "Membuat karya kriya anyaman berbahan dasar bambu, rotan, atau pandan lokal.",
+                    "Bahan baku setengah jadi disiapkan oleh peserta dan dirakit di lokasi lomba.",
+                    "Penilaian meliputi: Kerapian anyaman, kreativitas bentuk, fungsi pakai, dan penyelesaian akhir."
+                ]
+            }
+        ];
+
+        // 4. Data Jadwal Pelaksanaan
+        const scheduleData = [
+            {
+                hari: "Hari 1",
+                tanggal: "Selasa, 24 November 2026",
+                agenda: [
+                    { waktu: "07.30 - 09.30 WIB", kegiatan: "Pawai Defile Kontingen & Upacara Pembukaan PORSENI", lokasi: "Lapangan Utama Kecamatan Pinoh Utara (Tekelak)", kategori: "Umum" },
+                    { waktu: "10.00 - 15.30 WIB", kegiatan: "Babak Penyisihan Sepak Bola Mini (SD) & Bola Voli", lokasi: "Lapangan Olahraga Desa Tekelak", kategori: "Olahraga" },
+                    { waktu: "13.00 - 16.00 WIB", kegiatan: "Lomba Gambar Bercerita & Kriya Anyaman", lokasi: "Aula SDN 01 Tekelak", kategori: "Seni" }
+                ]
+            },
+            {
+                hari: "Hari 2",
+                tanggal: "Rabu, 25 November 2026",
+                agenda: [
+                    { waktu: "08.00 - 12.00 WIB", kegiatan: "Cabang Atletik (Lari Sprint 60m/100m & Lompat Jauh)", lokasi: "Lintasan Lapangan Utama Pinoh Utara", kategori: "Olahraga" },
+                    { waktu: "08.30 - 15.30 WIB", kegiatan: "Babak Penyisihan Bulu Tangkis & Tenis Meja", lokasi: "Gedung Serbaguna Kecamatan Pinoh Utara", kategori: "Olahraga" },
+                    { waktu: "09.00 - 15.00 WIB", kegiatan: "Lomba Menyanyi Solo Jenjang SD & SMP", lokasi: "Panggung Utama Seni Pinoh Utara", kategori: "Seni" }
+                ]
+            },
+            {
+                hari: "Hari 3",
+                tanggal: "Kamis, 26 November 2026",
+                agenda: [
+                    { waktu: "08.00 - 16.00 WIB", kegiatan: "Babak Perempat Final & Semifinal Futsal SMP & Bola Voli", lokasi: "Lapangan Utama & Lapangan SMPN 1 Pinoh Utara", kategori: "Olahraga" },
+                    { waktu: "09.00 - 14.00 WIB", kegiatan: "Lomba Baca Puisi & Bertutur Cerita Rakyat", lokasi: "Aula Korwil Pendidikan Pinoh Utara", kategori: "Seni" },
+                    { waktu: "13.00 - 16.30 WIB", kegiatan: "Lomba Catur Cepat Perorangan SD & SMP", lokasi: "Ruang Kelas SMPN 1 Pinoh Utara", kategori: "Olahraga" }
+                ]
+            },
+            {
+                hari: "Hari 4",
+                tanggal: "Jumat, 27 November 2026",
+                agenda: [
+                    { waktu: "08.00 - 11.00 WIB", kegiatan: "Final Bulu Tangkis & Final Tenis Meja", lokasi: "Gedung Serbaguna Kecamatan Pinoh Utara", kategori: "Olahraga" },
+                    { waktu: "13.30 - 17.00 WIB", kegiatan: "Festival & Lomba Tari Kreasi Daerah (SD & SMP)", lokasi: "Panggung Utama Seni Pinoh Utara", kategori: "Seni" }
+                ]
+            },
+            {
+                hari: "Hari 5",
+                tanggal: "Sabtu, 28 November 2026",
+                agenda: [
+                    { waktu: "08.00 - 11.30 WIB", kegiatan: "Grand Final Sepak Bola Mini, Futsal & Bola Voli", lokasi: "Lapangan Utama Kecamatan Pinoh Utara", kategori: "Olahraga" },
+                    { waktu: "13.30 - 16.00 WIB", kegiatan: "Upacara Penutupan, Penampilan Juara Seni & Pembagian Piala Juara Umum", lokasi: "Panggung Kehormatan Kecamatan Pinoh Utara", kategori: "Umum" }
+                ]
+            }
+        ];
+
+        // Navigasi Antar Menu (Tab Switching)
+        function switchMenu(menuId) {
+            // Sembunyikan semua section
+            document.querySelectorAll('.tab-section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            // Tampilkan section yang dipilih
+            const targetSec = document.getElementById('section-' + menuId);
+            if (targetSec) targetSec.classList.add('active');
+
+            // Update tombol navigasi desktop
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = "nav-btn px-4 py-2.5 rounded-xl font-semibold text-sm text-slate-600 hover:text-primary-600 hover:bg-slate-100 transition-all flex items-center space-x-2";
+            });
+            const activeNav = document.getElementById('nav-' + menuId);
+            if (activeNav) {
+                activeNav.className = "nav-btn px-4 py-2.5 rounded-xl font-semibold text-sm transition-all flex items-center space-x-2 bg-primary-50 text-primary-700";
+            }
+
+            // Update tombol navigasi mobile
+            document.querySelectorAll('.mnav-btn').forEach(btn => {
+                btn.className = "mnav-btn w-full text-left px-4 py-3 rounded-xl font-semibold text-sm text-slate-600 hover:bg-slate-100 flex items-center space-x-3";
+            });
+            const activeMNav = document.getElementById('mnav-' + menuId);
+            if (activeMNav) {
+                activeMNav.className = "mnav-btn w-full text-left px-4 py-3 rounded-xl font-semibold text-sm flex items-center space-x-3 bg-primary-50 text-primary-700";
+            }
+
+            // Tutup menu mobile jika sedang terbuka
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
+
+            // Scroll ke atas dengan mulus
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = "fa-solid fa-bars text-xl";
+            } else {
+                icon.className = "fa-solid fa-xmark text-xl";
+            }
+        }
+
+        // Update opsi cabang lomba berdasarkan bidang
+        function updateCabangOptions() {
+            const bidang = document.getElementById('regBidang').value;
+            const cabangSelect = document.getElementById('regCabang');
+            cabangSelect.innerHTML = '';
+            cabangOptions[bidang].forEach(cab => {
+                const opt = document.createElement('option');
+                opt.value = cab;
+                opt.textContent = cab;
+                cabangSelect.appendChild(opt);
+            });
+        }
+
+        // Render daftar pendaftar
+        function renderRegistrations() {
+            const container = document.getElementById('recentRegistrationsList');
+            const badge = document.getElementById('totalPendaftarBadge');
+            badge.textContent = registrationsData.length + " Terdaftar";
+            container.innerHTML = '';
+
+            registrationsData.slice().reverse().forEach(item => {
+                const badgeColor = item.bidang === 'Olahraga' 
+                    ? 'bg-amber-100 text-amber-800' 
+                    : 'bg-purple-100 text-purple-800';
+
+                const div = document.createElement('div');
+                div.className = "p-3.5 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-start justify-between gap-3";
+                div.innerHTML = `
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs font-extrabold px-2 py-0.5 rounded bg-slate-200 text-slate-800">${item.jenjang}</span>
+                            <h5 class="font-bold text-slate-900 text-sm">${item.sekolah}</h5>
+                        </div>
+                        <p class="text-xs text-slate-700 font-medium mt-1"><i class="fa-solid fa-user text-slate-400 mr-1.5"></i>${item.nama} (${item.gender})</p>
+                        <p class="text-[11px] text-slate-500 mt-0.5">${item.cabang}</p>
+                    </div>
+                    <span class="${badgeColor} text-[10px] font-bold px-2.5 py-1 rounded-full shrink-0">${item.bidang}</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Handle submit form pendaftaran
+        function handleRegistration(e) {
+            e.preventDefault();
+            const newEntry = {
+                jenjang: document.getElementById('regJenjang').value,
+                sekolah: document.getElementById('regSekolah').value,
+                bidang: document.getElementById('regBidang').value,
+                cabang: document.getElementById('regCabang').value,
+                nama: document.getElementById('regNama').value,
+                gender: document.getElementById('regGender').value,
+                pendamping: document.getElementById('regPendamping').value
+            };
+
+            registrationsData.push(newEntry);
+            renderRegistrations();
+            document.getElementById('formPendaftaran').reset();
+            updateCabangOptions();
+
+            showNotification(
+                'Pendaftaran Berhasil Tercatat!',
+                `Kontingen ${newEntry.sekolah} atas nama ${newEntry.nama} (${newEntry.cabang}) berhasil didaftarkan.`,
+                'success'
+            );
+        }
+
+        // Filter & Render Juknis
+        let currentJuknisFilter = 'all';
+        function filterJuknis(kategori) {
+            currentJuknisFilter = kategori;
+            document.querySelectorAll('.juknis-filter-btn').forEach(btn => {
+                btn.className = "juknis-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition-all";
+            });
+            const activeBtn = document.getElementById('juknis-filter-' + kategori);
+            if (activeBtn) {
+                activeBtn.className = "juknis-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-900 shadow-sm transition-all";
+            }
+            renderJuknisCards();
+        }
+
+        function renderJuknisCards() {
+            const container = document.getElementById('juknisContainer');
+            const query = (document.getElementById('searchJuknis')?.value || '').toLowerCase();
+            container.innerHTML = '';
+
+            const filtered = juknisData.filter(item => {
+                const matchKat = currentJuknisFilter === 'all' || item.kategori === currentJuknisFilter;
+                const matchQuery = item.judul.toLowerCase().includes(query) || item.kategori.toLowerCase().includes(query);
+                return matchKat && matchQuery;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500">Tidak ada cabang lomba yang cocok dengan pencarian Anda.</div>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const badgeClass = item.kategori === 'Olahraga' 
+                    ? 'bg-amber-100 text-amber-800' 
+                    : 'bg-purple-100 text-purple-800';
+
+                const rulesHtml = item.aturan.map(r => `<li class="flex items-start space-x-2"><i class="fa-solid fa-circle-check text-primary-500 text-xs mt-1 shrink-0"></i><span>${r}</span></li>`).join('');
+
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm flex flex-col justify-between card-hover";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-primary-50 text-primary-600 flex items-center justify-center text-xl">
+                                <i class="fa-solid ${item.icon}"></i>
+                            </div>
+                            <span class="${badgeClass} text-xs font-extrabold px-3 py-1 rounded-full">${item.kategori}</span>
+                        </div>
+                        <h3 class="text-lg font-extrabold text-slate-900 mb-2">${item.judul}</h3>
+                        <div class="flex items-center space-x-3 text-xs text-slate-500 font-medium mb-4 pb-3 border-b border-slate-100">
+                            <span><i class="fa-solid fa-Graduation-cap mr-1"></i> ${item.jenjang}</span>
+                            <span>•</span>
+                            <span><i class="fa-solid fa-users mr-1"></i> ${item.kuota}</span>
+                        </div>
+                        <ul class="space-y-2 text-xs text-slate-600 leading-relaxed mb-6">
+                            ${rulesHtml}
+                        </ul>
+                    </div>
+                    <button onclick="showNotification('Unduh Juknis Cabang', 'Mengunduh PDF Juknis khusus untuk cabang ${item.judul}.', 'info')" class="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-primary-50 hover:text-primary-700 text-slate-700 font-bold text-xs transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Unduh Detail Peraturan</span>
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Filter & Render Jadwal
+        function filterSchedule(dayFilter) {
+            document.querySelectorAll('.sched-btn').forEach(btn => {
+                btn.className = "sched-btn shrink-0 px-5 py-3 rounded-2xl font-bold text-sm bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition-all";
+            });
+            const activeBtn = document.getElementById('sched-btn-' + dayFilter);
+            if (activeBtn) {
+                activeBtn.className = "sched-btn shrink-0 px-5 py-3 rounded-2xl font-bold text-sm bg-primary-600 text-white shadow-md transition-all";
+            }
+
+            const container = document.getElementById('scheduleContainer');
+            container.innerHTML = '';
+
+            const filteredDays = dayFilter === 'all' 
+                ? scheduleData 
+                : scheduleData.filter(d => d.hari === dayFilter);
+
+            filteredDays.forEach(dayObj => {
+                const itemsHtml = dayObj.agenda.map(ag => {
+                    let catBadge = 'bg-slate-100 text-slate-700';
+                    if (ag.kategori === 'Olahraga') catBadge = 'bg-amber-100 text-amber-800';
+                    if (ag.kategori === 'Seni') catBadge = 'bg-purple-100 text-purple-800';
+                    if (ag.kategori === 'Umum') catBadge = 'bg-emerald-100 text-emerald-800';
+
+                    return `
+                        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-white hover:shadow-sm transition-all">
+                            <div class="space-y-1">
+                                <div class="flex items-center space-x-2.5">
+                                    <span class="text-xs font-extrabold text-primary-600 bg-primary-50 px-2.5 py-1 rounded-lg">
+                                        <i class="fa-regular fa-clock mr-1"></i>${ag.waktu}
+                                    </span>
+                                    <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full ${catBadge}">${ag.kategori}</span>
+                                </div>
+                                <h4 class="font-bold text-slate-900 text-base pt-1">${ag.kegiatan}</h4>
+                                <p class="text-xs text-slate-500 flex items-center">
+                                    <i class="fa-solid fa-location-dot text-red-500 mr-1.5"></i> ${ag.lokasi}
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                const section = document.createElement('div');
+                section.className = "bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm";
+                section.innerHTML = `
+                    <div class="flex items-center space-x-3 mb-5 pb-3 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-primary-600 text-white font-extrabold flex items-center justify-center text-sm">
+                            ${dayObj.hari.replace('Hari ', 'H')}
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-primary-600">${dayObj.hari}</span>
+                            <h3 class="text-lg font-extrabold text-slate-900">${dayObj.tanggal}</h3>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        ${itemsHtml}
+                    </div>
+                `;
+                container.appendChild(section);
+            });
+        }
+
+        // Toast Notification Helper
+        let toastTimeout;
+        function showNotification(title, message, type = 'success') {
+            const modal = document.getElementById('toastModal');
+            const titleEl = document.getElementById('toastTitle');
+            const msgEl = document.getElementById('toastMessage');
+            const iconEl = document.getElementById('toastIcon');
+
+            titleEl.textContent = title;
+            msgEl.textContent = message;
+
+            if (type === 'success') {
+                iconEl.className = "w-11 h-11 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl shrink-0";
+                iconEl.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+            } else {
+                iconEl.className = "w-11 h-11 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl shrink-0";
+                iconEl.innerHTML = '<i class="fa-solid fa-file-arrow-down"></i>';
+            }
+
+            modal.classList.remove('hidden');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                closeToast();
+            }, 4500);
+        }
+
+        function closeToast() {
+            document.getElementById('toastModal').classList.add('hidden');
+        }
+
+        // Live Countdown Timer Simulation
+        function startCountdown() {
+            let secs = 20;
+            let mins = 45;
+            setInterval(() => {
+                secs--;
+                if (secs < 0) {
+                    secs = 59;
+                    mins = mins > 0 ? mins - 1 : 59;
+                }
+                const secEl = document.getElementById('cd-secs');
+                const minEl = document.getElementById('cd-mins');
+                if (secEl) secEl.textContent = secs < 10 ? '0' + secs : secs;
+                if (minEl) minEl.textContent = mins < 10 ? '0' + mins : mins;
+            }, 1000);
+        }
+
+        // Inisialisasi saat halaman dimuat
+        window.onload = function() {
+            updateCabangOptions();
+            renderRegistrations();
+            renderJuknisCards();
+            filterSchedule('all');
+            startCountdown();
+        };
+    </script>
+</body>
+</html>
